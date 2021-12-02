@@ -22,16 +22,8 @@ public class App {
 
             List<Integer> list = Files.readAllLines(filePath, Charset.defaultCharset())
                 .stream().map(Integer::parseInt).collect(Collectors.toList());
-            int counter = 0;
 
-            for(int i = 0; i < list.size() - 3; i++) {
-                int[] values = { list.get(i), list.get(i + 1), list.get(i + 2), list.get(i + 3) };
-                int firstSum = values[0] + values[1] + values[2];
-                int secondSum = values[1] + values[2] + values[3];
-                if(secondSum > firstSum) counter++;
-            }
-
-            System.out.println(counter);
+            //Not started yet :D
 
         } catch (IOException e) {
             e.printStackTrace();

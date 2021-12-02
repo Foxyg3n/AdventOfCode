@@ -22,20 +22,35 @@ public class App {
 
             List<Integer> list = Files.readAllLines(filePath, Charset.defaultCharset())
                 .stream().map(Integer::parseInt).collect(Collectors.toList());
-            int counter = 0;
 
-            for(int i = 0; i < list.size() - 1; i++) {
-                int firstValue = list.get(i);
-                int secondValue = list.get(i + 1);
-                if(secondValue > firstValue) counter++;
-            }
-
-            System.out.println(counter);
+            System.out.println("Part 1 answer: " + part1(list));
+            System.out.println("Part 2 answer: " + part2(list));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private static Integer part1(List<Integer> list) {
+        int counter = 0;
+        for(int i = 0; i < list.size() - 1; i++) {
+            int firstValue = list.get(i);
+            int secondValue = list.get(i + 1);
+            if(secondValue > firstValue) counter++;
+        }
+        return counter;
+    }
+
+    private static Integer part2(List<Integer> list) {
+        int counter = 0;
+        for(int i = 0; i < list.size() - 3; i++) {
+            int[] values = { list.get(i), list.get(i + 1), list.get(i + 2), list.get(i + 3) };
+            int firstSum = values[0] + values[1] + values[2];
+            int secondSum = values[1] + values[2] + values[3];
+            if(secondSum > firstSum) counter++;
+        }
+        return counter;
     }
 
 }
